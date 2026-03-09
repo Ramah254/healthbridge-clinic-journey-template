@@ -1,0 +1,52 @@
+{
+  "_comment": "HealthBridge Clinic Journey Template - Airtable Base Schema",
+  "_version": "1.0.0",
+  "_description": "Use this as a reference to manually recreate the Airtable base. Airtable does not support direct JSON import but this documents the full schema.",
+  "tables": [
+    {
+      "name": "Patients",
+      "description": "One record per patient enrolled in a care journey",
+      "fields": [
+        { "name": "patient_id", "type": "autoNumber", "description": "Auto-generated unique patient ID" },
+        { "name": "full_name", "type": "singleLineText", "description": "Patient full name" },
+        { "name": "phone_number", "type": "phoneNumber", "description": "WhatsApp/SMS number with country code e.g. +254712345678" },
+        { "name": "age", "type": "number", "description": "Patient age in years" },
+        { "name": "gender", "type": "singleSelect", "options": ["Male", "Female", "Other"], "description": "Patient gender" },
+        { "name": "diagnosis", "type": "singleLineText", "description": "Short clinical note e.g. Hypertension follow-up" },
+        { "name": "attending_nurse", "type": "singleLineText", "description": "Name of the nurse managing the journey" },
+        { "name": "intake_date", "type": "date", "description": "Date patient was registered" },
+        {
+          "name": "journey_status",
+          "type": "singleSelect",
+          "options": ["Intake", "Open", "Day5", "Day10", "Closed", "OptedOut"],
+          "description": "Current stage in the patient journey - drives Make.com routing logic"
+        },
+        { "name": "follow_up_count", "type": "number", "description": "Auto-incremented by Make each time a follow-up is sent" },
+        { "name": "last_contacted", "type": "date", "description": "Date of last outbound message - updated by Make" },
+        { "name": "next_follow_up_date", "type": "date", "description": "Date of next scheduled follow-up" },
+        { "name": "opted_out", "type": "checkbox", "description": "True if patient replied STOP" },
+        { "name": "escalation_flag", "type": "checkbox", "description": "True if patient needs urgent nurse review" },
+        { "name": "consent_given", "type": "checkbox", "description": "True if patient consented to automated messages" },
+        { "name": "notes", "type": "multilineText", "description": "Nurse notes and observations" }
+      ]
+    },
+    {
+      "name": "Journey Log",
+      "description": "Append-only log of all patient journey events",
+      "fields": [
+        { "name": "log_id", "type": "autoNumber", "description": "Auto-generated log entry ID" },
+        { "name": "patient_id", "type": "linkedRecord", "linkedTable": "Patients", "description": "Linked patient record" },
+        {
+          "name": "event_type",
+          "type": "singleSelect",
+          "options": ["MessageSent", "ReplyReceived", "Escalated", "StatusChanged", "OptOut", "NurseNote"],
+          "description": "Type of event"
+        },
+        { "name": "event_date", "type": "dateTime", "description": "Timestamp of the event" },
+        { "name": "message_content", "type": "multilineText", "description": "Full text of the message sent" },
+        { "name": "response", "type": "multilineText", "description": "Patient reply text if any" },
+        { "name": "triggered_by", "type": "singleLineText", "description": "e.g. Make scenario or Nurse manual" }
+      ]
+    }
+  ]
+}
