@@ -1,0 +1,11 @@
+patient_id,full_name,phone_number,age,gender,diagnosis,attending_nurse,intake_date,journey_status,follow_up_count,last_contacted,opted_out,escalation_flag,consent_given,notes
+1,Jane Muthoni,+254711000001,34,Female,Hypertension follow-up,Nurse Wanjiku,2026-03-01,Open,0,,FALSE,FALSE,TRUE,Patient doing well at intake
+2,John Otieno,+254722000002,45,Male,Diabetes management,Nurse Kamau,2026-03-01,Open,0,,FALSE,FALSE,TRUE,Blood sugar levels reviewed
+3,Mary Njeri,+254733000003,28,Female,Postnatal follow-up,Nurse Wanjiku,2026-03-02,Open,0,,FALSE,FALSE,TRUE,Delivered last week - routine check
+4,Peter Mutua,+254744000004,52,Male,Malaria recovery,Nurse Odhiambo,2026-03-02,Day5,1,2026-03-07,FALSE,FALSE,TRUE,Responded YES to Day 5 message
+5,Grace Akinyi,+254755000005,41,Female,Hypertension follow-up,Nurse Kamau,2026-03-03,Day10,2,2026-03-13,FALSE,FALSE,TRUE,Responded YES to Day 10 message
+6,Samuel Kariuki,+254766000006,60,Male,Chest infection follow-up,Nurse Wanjiku,2026-03-03,Closed,2,2026-03-13,FALSE,FALSE,TRUE,Journey completed successfully
+7,Fatuma Hassan,+254777000007,35,Female,Anemia management,Nurse Odhiambo,2026-03-04,Open,0,,FALSE,FALSE,TRUE,Iron supplements prescribed
+8,David Kimani,+254788000008,48,Male,Back pain follow-up,Nurse Kamau,2026-03-04,OptedOut,1,2026-03-09,TRUE,FALSE,TRUE,Patient replied STOP
+9,Rose Waweru,+254799000009,31,Female,UTI recovery,Nurse Wanjiku,2026-03-05,Open,0,,FALSE,TRUE,TRUE,Escalation flag - did not respond to intake confirmation
+10,Michael Omondi,+254700000010,55,Male,Hypertension follow-up,Nurse Odhiambo,2026-03-05,Open,0,,FALSE,FALSE,TRUE,New patient - first journey
